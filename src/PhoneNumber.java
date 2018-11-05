@@ -8,6 +8,6 @@ public class PhoneNumber {
     }
 
     public String print(PrintFormat format) {
-        return "";
+        return format.print(title, number);
     }
 }

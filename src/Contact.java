@@ -1,15 +1,23 @@
-import java.util.Set;
 
 public class Contact {
     private String name;
-    private Set<PhoneNumber> phoneNumberSet;
+    private PhoneNumbers phoneNumbers;
 
-    public Contact(String name, Set<PhoneNumber> phoneNumberSet) {
+    public Contact(String name) {
         this.name = name;
-        this.phoneNumberSet = phoneNumberSet;
+        phoneNumbers = new PhoneNumbers();
     }
 
-    public String print() {
-        return "";
+    public Contact(String name, PhoneNumbers phoneNumbers) {
+        this.name = name;
+        this.phoneNumbers = phoneNumbers;
+    }
+
+    public boolean areUnique(Contact that) {
+        return this.name.equals(that.name);
+    }
+
+    public String print(PrintFormat contactFormat, PrintFormat phoneNumberFormat) {
+        return contactFormat.print(name, phoneNumbers.print(phoneNumberFormat));
     }
 }
