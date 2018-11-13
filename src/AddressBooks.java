@@ -1,9 +1,17 @@
-import java.util.Set;
+import java.util.Map;
 
 public class AddressBooks {
-    private Set<AddressBook> addressBooks;
+    private Map<String, AddressBook> addressBooks;
 
-    public String printAllUniqueContacts() {
+    public void add(String name, AddressBook addressBook) {
+
+    }
+
+    public void remove(String name) {
+
+    }
+
+    public String printAllUniqueContacts(PrintFormat contactFormat, PrintFormat phoneNumberFormat) {
         return "";
     }
 }

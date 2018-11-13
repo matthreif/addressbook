@@ -9,11 +9,10 @@ public class AddressBookTest {
 
     @Test
     public void testAddNewContact() {
-        AddressBook testAddressBook = new AddressBook();
-        Contact jason = TestUtils.createContactWithTwoPhoneNumbers("Jason",
-                new PhoneNumber("A", "1"), new PhoneNumber("B", "2"));
-
-        testAddressBook.addNew(jason);
+        AddressBook testAddressBook = TestUtils.createAddressBookWithOneContact(
+                TestUtils.createContactWithTwoPhoneNumbers("Jason",
+                        new PhoneNumber("A", "1"), new PhoneNumber("B", "2"))
+        );
 
         String output = testAddressBook.printAllContacts(ContactPrintFormat, PhoneNumberPrintFormat);
 
@@ -22,10 +21,9 @@ public class AddressBookTest {
 
     @Test
     public void testRemoveContact() {
-        AddressBook testAddressBook = new AddressBook();
         Contact jason = TestUtils.createContactWithTwoPhoneNumbers("Jason",
                 new PhoneNumber("A", "1"), new PhoneNumber("B", "2"));
-        testAddressBook.addNew(jason);
+        AddressBook testAddressBook = TestUtils.createAddressBookWithOneContact(jason);
 
         testAddressBook.remove(jason);
 
@@ -34,13 +32,13 @@ public class AddressBookTest {
 
     @Test
     public void testRemoveContactByNameWhereContactExists() {
-        AddressBook testAddressBook = new AddressBook();
-        Contact jason = TestUtils.createContactWithTwoPhoneNumbers("Jason",
-                new PhoneNumber("A", "1"), new PhoneNumber("B", "2"));
-        Contact natasha = TestUtils.createContactWithTwoPhoneNumbers("Natasha",
-                new PhoneNumber("M", "4"), new PhoneNumber("W", "46"));
-        testAddressBook.addNew(jason);
-        testAddressBook.addNew(natasha);
+
+        AddressBook testAddressBook = TestUtils.createAddressBookWithTwoContacts(
+                TestUtils.createContactWithTwoPhoneNumbers("Jason",
+                        new PhoneNumber("A", "1"), new PhoneNumber("B", "2")),
+                TestUtils.createContactWithTwoPhoneNumbers("Natasha",
+                        new PhoneNumber("M", "4"), new PhoneNumber("W", "46"))
+        );
 
         testAddressBook.removeByName("Jason");
 
@@ -49,10 +47,10 @@ public class AddressBookTest {
 
     @Test
     public void testRemoveContactByNameWhereContactDoesNotExist() {
-        AddressBook testAddressBook = new AddressBook();
-        Contact jason = TestUtils.createContactWithTwoPhoneNumbers("Jason",
-                new PhoneNumber("A", "1"), new PhoneNumber("B", "2"));
-        testAddressBook.addNew(jason);
+        AddressBook testAddressBook = TestUtils.createAddressBookWithOneContact(
+                TestUtils.createContactWithTwoPhoneNumbers("Jason",
+                        new PhoneNumber("A", "1"), new PhoneNumber("B", "2"))
+        );
 
         testAddressBook.removeByName("Hugo");
 
@@ -61,13 +59,13 @@ public class AddressBookTest {
 
     @Test
     public void testPrintAllContacts() {
-        AddressBook testAddressBook = new AddressBook();
-        Contact jason = TestUtils.createContactWithTwoPhoneNumbers("Jason",
-                new PhoneNumber("A", "1"), new PhoneNumber("B", "2"));
-        Contact janet = TestUtils.createContactWithTwoPhoneNumbers("Janet",
-                new PhoneNumber("C", "3"), new PhoneNumber("D", "4"));
-        testAddressBook.addNew(jason);
-        testAddressBook.addNew(janet);
+        AddressBook testAddressBook = TestUtils.createAddressBookWithTwoContacts(
+                TestUtils.createContactWithTwoPhoneNumbers("Jason",
+                        new PhoneNumber("A", "1"), new PhoneNumber("B", "2")),
+                TestUtils.createContactWithTwoPhoneNumbers("Janet",
+                        new PhoneNumber("C", "3"), new PhoneNumber("D", "4"))
+
+        );
 
         String output = testAddressBook.printAllContacts(ContactPrintFormat, PhoneNumberPrintFormat);
 
