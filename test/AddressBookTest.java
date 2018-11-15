@@ -58,6 +58,15 @@ public class AddressBookTest {
     }
 
     @Test
+    public void testPrintAllContactsWhenEmpty() {
+        AddressBook testAddressBook = new AddressBook();
+
+        String output = testAddressBook.printAllContacts(ContactPrintFormat, PhoneNumberPrintFormat);
+
+        assertEquals("", output);
+    }
+
+    @Test
     public void testPrintAllContacts() {
         AddressBook testAddressBook = TestUtils.createAddressBookWithTwoContacts(
                 TestUtils.createContactWithTwoPhoneNumbers("Jason",
@@ -70,7 +79,6 @@ public class AddressBookTest {
         String output = testAddressBook.printAllContacts(ContactPrintFormat, PhoneNumberPrintFormat);
 
         assertEquals("Jason:A1,B2\nJanet:C3,D4", output);
-
     }
 
     @Test

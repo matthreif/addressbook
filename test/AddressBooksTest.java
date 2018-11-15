@@ -31,6 +31,20 @@ public class AddressBooksTest {
     }
 
     @Test
+    public void testPrintAllUniqueContactsWhenEmpty() {
+        AddressBook addressBook1 = new AddressBook();
+        AddressBook addressBook2 = new AddressBook();
+
+        AddressBooks testAddressBooks = new AddressBooks();
+        testAddressBooks.add("Address Book 1", addressBook1);
+        testAddressBooks.add("Address Book 2", addressBook2);
+
+        String output = testAddressBooks.printAllUniqueContacts(ContactPrintFormat, PhoneNumberPrintFormat);
+
+        assertEquals("", output);
+    }
+
+    @Test
     public void testPrintAllUniqueContacts() {
         AddressBook addressBook1 = TestUtils.createAddressBookWithTwoContacts(jason, hanna);
         AddressBook addressBook2 = TestUtils.createAddressBookWithTwoContacts(steve, jason);

@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 public class AddressBook {
     private List<Contact> contacts = new LinkedList<>();
 
-
-
     public void addNew(Contact contact) {
         contacts.add(contact);
     }
