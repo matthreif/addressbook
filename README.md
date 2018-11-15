@@ -28,6 +28,7 @@ Relevant tests:
 User interface:
 
     AddressBook.remove(Contact contact)
+    AddressBook.removeByName(String nameToRemove)
 
 Relevant tests:
 
@@ -77,6 +78,5 @@ Relevant tests:
 ## Notes
 
 * "Maintain multiple address books" is assumed to mean the ability to create a new set of address books and to add and remove named address books.
-* Two contacts are assumed to be unique if their names are identical. **Limitation**: If two unique contact entries define differing phone numbers, one set of phone numbers will be discarded.
+* Two contacts are assumed to be unique if their names are identical. **Limitation**: If two unique contact entries define differing phone numbers, one set of phone numbers will be discarded when printing.
 * The implementation of a user-defined print format is rudimentary and was primarily intended to decouple formatting from tests.
-
