@@ -3,12 +3,12 @@ import static org.junit.Assert.*;
 
 public class AddressBooksTest {
 
-    Contact jason = TestUtils.createContactWithOnePhoneNumber("Jason", new PhoneNumber("J", "1"));
-    Contact hanna = TestUtils.createContactWithOnePhoneNumber("Hanna", new PhoneNumber("H", "2"));
-    Contact steve = TestUtils.createContactWithOnePhoneNumber("Steve", new PhoneNumber("S", "3"));
+    private static Contact jason = TestUtils.createContactWithOnePhoneNumber("Jason", new PhoneNumber("J", "1"));
+    private static Contact hanna = TestUtils.createContactWithOnePhoneNumber("Hanna", new PhoneNumber("H", "2"));
+    private static Contact steve = TestUtils.createContactWithOnePhoneNumber("Steve", new PhoneNumber("S", "3"));
 
     private static PrintFormat ContactPrintFormat = new PrintFormat("%s:%s");
-    private static PrintFormat PhoneNumberPrintFormat = new PrintFormat("irrelevant");
+    private static PrintFormat PhoneNumberPrintFormat = new PrintFormat("PHONE");
 
     @Test
     public void testMaintainMultipleAddressBooks() {
@@ -21,13 +21,13 @@ public class AddressBooksTest {
 
         String outputFromTwoAddressBooks = testAddressBooks.printAllUniqueContacts(ContactPrintFormat, PhoneNumberPrintFormat);
 
-        assertEquals("Jason:irrelevant\nHanna:irrelevant", outputFromTwoAddressBooks);
+        assertEquals("Hanna:PHONE\nJason:PHONE", outputFromTwoAddressBooks);
 
         testAddressBooks.remove("Address Book 1");
 
         String outputFromOneAddressBook = testAddressBooks.printAllUniqueContacts(ContactPrintFormat, PhoneNumberPrintFormat);
 
-        assertEquals("Hanna:irrelevant", outputFromOneAddressBook);
+        assertEquals("Hanna:PHONE", outputFromOneAddressBook);
     }
 
     @Test
@@ -41,6 +41,6 @@ public class AddressBooksTest {
 
         String output = testAddressBooks.printAllUniqueContacts(ContactPrintFormat, PhoneNumberPrintFormat);
 
-        assertEquals("Hanna:irrelevant\nJason:irrelevant\nSteve:irrelevant", output);
+        assertEquals("Hanna:PHONE\nJason:PHONE\nSteve:PHONE", output);
     }
 }

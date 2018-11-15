@@ -13,6 +13,10 @@ public class Contact {
         this.phoneNumbers = phoneNumbers;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public boolean areUnique(Contact that) {
         return this.name.equals(that.name);
     }
